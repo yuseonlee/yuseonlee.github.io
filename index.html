@@ -1,0 +1,154 @@
+<!-- 21961085 이유선 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21961085_이유선</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+        html{
+            --color-texta: #1d1d1d;
+            --color-textb: #fff;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            cursor: none;
+        }
+
+        a{
+            text-decoration: none;
+            
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            min-height: 10vh;
+            align-items: center; 
+            margin: auto;
+        }
+        .nav-links{
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            
+        }
+
+        .nav-links li{
+            padding: 1rem;
+        }
+
+        .nav-links, h1{
+            flex: 1;
+        }
+
+        .cursor{
+            width: 3rem;
+            height: 3rem;
+            border: 2px solid rgb(224, 177, 255);
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50% -50%);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            transition-property: background,transform;
+            transform-origin: 100% 100%;
+            z-index: -1;
+            backdrop-filter: blur(5);
+            background-size: cover;
+
+        }
+        .cursor-grow{
+            transform: scale(2);
+            background-color: var(--color-texta);
+        }
+
+        .link-grow{
+            transform: scale(2);
+            background: rgb(195, 145, 241);
+        }
+
+        .nav-links li a:hover::after{
+            width: calc(100% -2rem);
+            height: 3px;
+            background-size: contain;
+            color: white;
+        }
+
+        .hovered-link{
+            color: white;
+        }
+        .one {
+        background-size: cover;
+        text-align: center;
+        padding-top: 50px;
+        padding-bottom: 130px;
+        }
+        .profile {
+        border-radius: 30%;
+        display: inline-block;
+        padding: 0.5rem;
+        margin-top: 1px;
+        border: 1px solid gray;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgb(255, 255, 255, 0.5);
+        }
+        .profile img {
+        border-radius: 30%;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cursor"></div>
+        <nav>
+            <h1>You Sun</h1>
+            <ul class="nav-links">
+                <li><a href="index.html" title="home" class="puple">HOME</a></li>
+                <li><a href="" title="class" >CLASS</a></li>
+                <li><a href="" title="about" >ABOUT</a></li>
+                <li><a href="" title="palying" >PLAYING</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="list">
+        <div class="one">
+          <span class="profile"><img src="me.jpeg" width="550px;" height="550px" alt=""/></span> 
+          <h3><strong>Hello! I'm YOUSUN.</strong> <br>INSTARGRAM : <a href="https://www.instagram.com/lov2_sun/">@lov2_sun</a></h3>
+        </div>
+    </div>
+</body>
+<script>
+    let mouseCursor = document.querySelector(".cursor");
+    let navLinks = document.querySelectorAll('.nav-links li');
+
+    
+    window.addEventListener('mousemove',cursor);
+     
+    function cursor(e) {
+        mouseCursor.style.top = e.pageY + "px";
+        mouseCursor.style.left = e.pageX + "px";
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('mouseleave', () => {
+            mouseCursor.classList.remove("link-grow");
+            mouseCursor.style.zIndex = "-1";
+            link.classList.remove('hovered-link');
+        });
+        link.addEventListener('mouseover', () => {
+            mouseCursor.classList.add("link-grow");
+            // mouseCursor.style.zIndex = "1000";
+            link.classList.add('hovered-link');
+        });
+    });
+</script>
+</html>
